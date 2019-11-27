@@ -12,33 +12,33 @@ import scipy.spatial.distance as distance
 def build_vocabulary(image_paths, vocab_size, feature_name):
     #TODO: Implement this function!
     features = []
-    image_size = 144
+    image_size = 150
     z = 2
     for path in image_paths:
         if feature_name == 'bag of words':
             img = io.imread(path)
             img = resize(img, (image_size, image_size))
-            long_boi = hog(img, orientations=9, cells_per_block=(2, 2), pixels_per_cell=(4, 4),
+            feature_des = hog(img, orientations=9, cells_per_block=(2, 2), pixels_per_cell=(4, 4),
                            feature_vector=True, visualize=False)
-            long_boi = np.array(long_boi)
-            small_boi = long_boi.reshape(-1, z * z * 9)
+            feature_des = np.array(feature_des)
+            small_boi = feature_des.reshape(-1, z * z * 9)
             features.append(small_boi)
 
         elif feature_name == 'sift':
             img = cv.imread(path)
             gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
             sift = cv.xfeatures2d.SIFT_create()
-            kp, long_boi = sift.detectAndCompute(gray_img, None)
-            long_boi = np.array(long_boi, dtype=float)
-            features.append(long_boi)
+            kp, feature_des = sift.detectAndCompute(gray_img, None)
+            feature_des = np.array(feature_des, dtype=float)
+            features.append(feature_des)
 
         elif feature_name == 'gmm':
             img = io.imread(path)
             img = resize(img, (image_size, image_size))
             gmm = mixture.GaussianMixture(n_components=2)
-            long_boi = gmm.fit(img)
-            long_boi = long_boi.means_
-            features.append(long_boi)
+            feature_des = gmm.fit(img)
+            feature_des = feature_des.means_
+            features.append(feature_des)
 
         elif feature_name == 'lbp':
             img = io.imread(path)
@@ -52,9 +52,9 @@ def build_vocabulary(image_paths, vocab_size, feature_name):
             img = cv.imread(path)
             gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
             surf = cv.xfeatures2d_SURF.create()
-            kp, long_boi = surf.detectAndCompute(gray_img, None)
-            long_boi = np.array(long_boi, dtype=float)
-            features.append(long_boi)
+            kp, feature_des = surf.detectAndCompute(gray_img, None)
+            feature_des = np.array(feature_des, dtype=float)
+            features.append(feature_des)
 
     features = np.vstack(features)
     kmeans = KMeans(n_clusters=vocab_size, max_iter=100).fit(features)
@@ -62,52 +62,102 @@ def build_vocabulary(image_paths, vocab_size, feature_name):
 
     return vocab
 
-def get_bags_of_words(image_paths, feature_name):
+def get_sift(image_paths):
+    image_features = []
+    for path in image_paths:
+        vocab = np.load('./vocab.npy')
+        print('Loaded vocab from file.')
+        img = cv.imread(path)
+        gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+        sift = cv.xfeatures2d.SIFT_create()
+        kp, feature_des = sift.detectAndCompute(gray_img, None)
+        feature_des = np.array(feature_des, dtype=float)
+
+        dist = distance.cdist(feature_des, vocab)
+        closet = np.argsort(dist, axis=1)[:,0]
+        hist = np.zeros(len(vocab))
+        idx, counts = np.unique(closet, return_counts=True)
+        hist[idx] += counts
+        hist_norm = hist / np.linalg.norm(hist)
+        image_features.append(hist_norm)
+    return image_features
+
+def get_gmm(image_paths):
+    vocab = np.load('./vocab.npy')
+    print('Loaded vocab from file.')
+    image_size = 150
+    image_features = []
+    for path in image_paths:
+        img = io.imread(path)
+        img = resize(img, (image_size, image_size))
+        gmm = mixture.GaussianMixture(n_components=2)
+        feature_des = gmm.fit(img)
+        feature_des = feature_des.means_
+        dist = distance.cdist(feature_des, vocab)
+        closet = np.argsort(dist, axis=1)[:,0]
+        hist = np.zeros(len(vocab))
+        idx, counts = np.unique(closet, return_counts=True)
+        hist[idx] += counts
+        hist_norm = hist / np.linalg.norm(hist)
+        image_features.append(hist_norm)
+    return image_features
+
+def get_lbp(image_paths):
+    vocab = np.load('./vocab.npy')
+    print('Loaded vocab from file.')
+    image_features = []
+    image_size = 150
+    for path in image_paths:
+        img = io.imread(path)
+        img = resize(img, (image_size, image_size))
+        radius = 3
+        no_points = 8 * radius
+        lbp = local_binary_pattern(img, no_points, radius, method="uniform")
+        feature_des = lbp
+        dist = distance.cdist(feature_des, vocab)
+        closet = np.argsort(dist, axis=1)[:, 0]
+        hist = np.zeros(len(vocab))
+        idx, counts = np.unique(closet, return_counts=True)
+        hist[idx] += counts
+        hist_norm = hist / np.linalg.norm(hist)
+        image_features.append(hist_norm)
+    return image_features
+
+def get_surf(image_paths):
+    vocab = np.load('./vocab.npy')
+    print('Loaded vocab from file.')
+    image_features = []
+    image_size = 150
+    for path in image_paths:
+        img = cv.imread(path)
+        gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+        surf = cv.xfeatures2d_SURF.create()
+        kp, feature_des = surf.detectAndCompute(gray_img, None)
+        feature_des = np.array(feature_des, dtype=float)
+        dist = distance.cdist(feature_des, vocab)
+        closet = np.argsort(dist, axis=1)[:, 0]
+        hist = np.zeros(len(vocab))
+        idx, counts = np.unique(closet, return_counts=True)
+        hist[idx] += counts
+        hist_norm = hist / np.linalg.norm(hist)
+        image_features.append(hist_norm)
+    return image_features
+
+def get_bags_of_words(image_paths):
     vocab = np.load('./vocab.npy')
     print('Loaded vocab from file.')
 
     #TODO: Implement this function!
     image_features = []
     z = 2
-    image_size = 144
+    image_size = 150
     for path in image_paths:
-        if feature_name == 'bag of words':
-            img = io.imread(path)
-            img = resize(img, (image_size, image_size))
-            long_boi = hog(img, orientations=9, cells_per_block=(2, 2), pixels_per_cell=(4, 4),
-                           feature_vector=True, visualize=False)
-            long_boi = np.array(long_boi).reshape(-1, z*z*9)
-
-        elif feature_name == 'sift':
-            img = cv.imread(path)
-            gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-            sift = cv.xfeatures2d.SIFT_create()
-            kp, long_boi = sift.detectAndCompute(gray_img, None)
-            long_boi = np.array(long_boi, dtype=float)
-
-        elif feature_name == 'gmm':
-            img = io.imread(path)
-            img = resize(img, (image_size, image_size))
-            gmm = mixture.GaussianMixture(n_components=2)
-            long_boi = gmm.fit(img)
-            long_boi = long_boi.means_
-
-        elif feature_name == 'lbp':
-            img = io.imread(path)
-            img = resize(img, (image_size, image_size))
-            radius = 3
-            no_points = 8 * radius
-            lbp = local_binary_pattern(img, no_points, radius, method="uniform")
-            long_boi = lbp
-
-        elif feature_name == 'surf':
-            img = cv.imread(path)
-            gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-            surf = cv.xfeatures2d_SURF.create()
-            kp, long_boi = surf.detectAndCompute(gray_img, None)
-            long_boi = np.array(long_boi, dtype=float)
-
-        dist = distance.cdist(long_boi, vocab)
+        img = io.imread(path)
+        img = resize(img, (image_size, image_size))
+        feature_des = hog(img, orientations=9, cells_per_block=(2, 2), pixels_per_cell=(4, 4),
+                       feature_vector=True, visualize=False)
+        feature_des = np.array(feature_des).reshape(-1, z*z*9)
+        dist = distance.cdist(feature_des, vocab)
         closet = np.argsort(dist, axis=1)[:,0]
         hist = np.zeros(len(vocab))
         idx, counts = np.unique(closet, return_counts=True)

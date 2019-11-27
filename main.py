@@ -2,8 +2,7 @@ import os
 import numpy as np
 from create_results_webpage import create_results_webpage
 from helpers import get_image_paths
-from student import build_vocabulary, get_bags_of_words, svm_classify
-
+import student
 
 def projSceneRecBoW():
     '''
@@ -50,16 +49,16 @@ def projSceneRecBoW():
     '''
 
     #FEATURE = 'placeholder'
-    FEATURE = 'bag of words'
+    #FEATURE = 'bag of words'
     #FEATURE = 'SIFT'
-    #FEATURE = 'GMM'
+    FEATURE = 'GMM'
     #FEATURE = 'LBP'
     #FEATURE = 'SURF'
 
     CLASSIFIER = 'support vector machine'
     #CLASSIFIER = 'placeholder'
 
-    data_path = './CVProject3/data/'
+    data_path = './data/'
 
     categories = ['Kitchen', 'Store', 'Bedroom', 'LivingRoom', 'Office',
                   'Industrial', 'Suburb', 'InsideCity', 'TallBuilding', 'Street',
@@ -75,23 +74,36 @@ def projSceneRecBoW():
         get_image_paths(data_path, categories, num_train_per_cat)
 
     print('Using %s representation for images.' % FEATURE)
-    if FEATURE.lower() == 'bag of words' or FEATURE.lower() == 'sift'\
-            or FEATURE.lower() == 'lbp' or FEATURE.lower() == 'gmm'\
-            or FEATURE.lower() == 'surf':
-
+    if FEATURE.lower() != 'placeholder':
         if not os.path.isfile('vocab.npy'):
             print('No existing visual word vocabulary found. Computing one from training images.')
             vocab_size = 200
 
-            vocab = build_vocabulary(train_image_paths, vocab_size, FEATURE.lower())
+            vocab = student.build_vocabulary(train_image_paths, vocab_size, FEATURE.lower())
             np.save('vocab.npy', vocab)
-            print("success vocabulary generation")
+            print("Vocabulary Generate!!!")
 
-        print("find vocabulary file")
-        
-        # 해당 코드에서는 임시로 image_feature를 뽑아내는 함수를 get_bags_of_words 라고 정의한다.
-        train_image_feats = get_bags_of_words(train_image_paths, FEATURE.lower())
-        test_image_feats = get_bags_of_words(test_image_paths, FEATURE.lower())
+        print("Find Vocabulary!!")
+
+    if FEATURE.lower() == 'bag of words':
+        train_image_feats = student.get_bags_of_words(train_image_paths)
+        test_image_feats = student.get_bags_of_words(test_image_paths)
+
+    elif FEATURE.lower() == 'sift':
+        train_image_feats = student.get_sift(train_image_paths)
+        test_image_feats = student.get_sift(test_image_paths)
+
+    elif FEATURE.lower() == 'surf':
+        train_image_feats = student.get_surf(train_image_paths)
+        test_image_feats = student.get_surf(test_image_paths)
+
+    elif FEATURE.lower() == 'gmm':
+        train_image_feats = student.get_gmm(train_image_paths)
+        test_image_feats = student.get_gmm(test_image_paths)
+
+    elif FEATURE.lower() == 'lbp':
+        train_image_feats = student.get_lbp(train_image_paths)
+        test_image_feats = student.get_lbp(test_image_paths)
 
     elif FEATURE.lower() == 'placeholder':
         train_image_feats = []
@@ -103,7 +115,7 @@ def projSceneRecBoW():
     print('Using %s classifier to predict test set categories.' % CLASSIFIER)
 
     if CLASSIFIER.lower() == 'support vector machine':
-        predicted_categories = svm_classify(train_image_feats, train_labels, test_image_feats)
+        predicted_categories = student.svm_classify(train_image_feats, train_labels, test_image_feats)
 
     elif CLASSIFIER.lower() == 'placeholder':
         random_permutation = np.random.permutation(len(test_labels))
