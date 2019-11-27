@@ -59,7 +59,7 @@ def projSceneRecBoW():
     CLASSIFIER = 'support vector machine'
     #CLASSIFIER = 'placeholder'
 
-    data_path = './data/'
+    data_path = './CVProject3/data/'
 
     categories = ['Kitchen', 'Store', 'Bedroom', 'LivingRoom', 'Office',
                   'Industrial', 'Suburb', 'InsideCity', 'TallBuilding', 'Street',
