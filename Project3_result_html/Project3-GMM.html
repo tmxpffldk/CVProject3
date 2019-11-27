@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- saved from url=(0090)http://localhost:63342/Project3/results_webpage/index.html?_ijt=vr9irl4n3kcns1b8f6hau8vqfe -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link href="./Project3-GMM_files/css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+  margin: 0px;
+  width: 100%;
+  font-family: Crimson Text, serif;
+  background: #fcfcfc;
+}
+table td {
+  text-align: center;
+  vertical-align: middle;
+}
+h1 {
+  font-family: Nunito, sans-serif;
+  font-weight: normal;
+  font-size: 28px;
+  margin: 25px 0px 0px 0px;
+  text-transform: lowercase;
+}
+.container {
+  margin: 0px auto 0px auto;
+  width: 1160px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+
+<center>
+<h1>Scene classification results visualization</h1>
+<img src="./Project3-GMM_files/confusion_matrix.png">
+
+<br>
+Accuracy (mean of diagonal of confusion matrix) is 0.175
+<p>
+
+</p><table border="0" cellpadding="4" cellspacing="1">
+<tbody><tr>
+<th>Category name</th>
+<th>Accuracy</th>
+<th colspan="2">Sample training images</th>
+<th colspan="2">Sample true positives</th>
+<th colspan="2">False positives with true label</th>
+<th colspan="2">False negatives with wrong predicted label</th>
+</tr>
+<tr>
+<td>Kitchen</td>
+<td>0.170</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Kitchen_image_0083.jpg" width="75" height="56"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Kitchen_image_0158.jpg" width="75" height="56"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Kitchen_image_0090.jpg" width="75" height="50"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Kitchen_image_0040.jpg" width="75" height="100"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Kitchen_image_0089.jpg" width="75" height="50"><br><small>Store</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Kitchen_image_0140.jpg" width="75" height="50"><br><small>Bedroom</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Kitchen_image_0073.jpg" width="75" height="53"><br><small>Suburb</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Kitchen_image_0006.jpg" width="75" height="56"><br><small>Street</small></td>
+</tr>
+<tr>
+<td>Store</td>
+<td>0.090</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Store_image_0204.jpg" width="75" height="112"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Store_image_0243.jpg" width="75" height="50"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Store_image_0091.jpg" width="75" height="63"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Store_image_0042.jpg" width="75" height="72"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Store_image_0047.jpg" width="75" height="51"><br><small>Office</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Store_image_0071.jpg" width="75" height="57"><br><small>Kitchen</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Store_image_0075.jpg" width="75" height="69"><br><small>Bedroom</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Store_image_0104.jpg" width="75" height="56"><br><small>LivingRoom</small></td>
+</tr>
+<tr>
+<td>Bedroom</td>
+<td>0.130</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Bedroom_image_0027.jpg" width="75" height="58"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Bedroom_image_0179.jpg" width="75" height="60"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Bedroom_image_0088.jpg" width="75" height="100"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Bedroom_image_0050.jpg" width="75" height="50"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Bedroom_image_0020.jpg" width="75" height="50"><br><small>LivingRoom</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Bedroom_image_0077.jpg" width="75" height="50"><br><small>Suburb</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Bedroom_image_0142.jpg" width="75" height="60"><br><small>Kitchen</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Bedroom_image_0118.jpg" width="75" height="50"><br><small>Highway</small></td>
+</tr>
+<tr>
+<td>LivingRoom</td>
+<td>0.060</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/LivingRoom_image_0253.jpg" width="75" height="76"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/LivingRoom_image_0233.jpg" width="75" height="56"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/LivingRoom_image_0003.jpg" width="75" height="49"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/LivingRoom_image_0021.jpg" width="75" height="52"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/LivingRoom_image_0119.jpg" width="75" height="75"><br><small>Mountain</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/LivingRoom_image_0047.jpg" width="75" height="56"><br><small>Bedroom</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/LivingRoom_image_0129.jpg" width="75" height="103"><br><small>Mountain</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/LivingRoom_image_0043.jpg" width="75" height="56"><br><small>TallBuilding</small></td>
+</tr>
+<tr>
+<td>Office</td>
+<td>0.150</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Office_image_0070.jpg" width="75" height="52"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Office_image_0160.jpg" width="75" height="49"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Office_image_0026.jpg" width="75" height="50"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Office_image_0131.jpg" width="75" height="48"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Office_image_0006.jpg" width="75" height="75"><br><small>Mountain</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Office_image_0080.jpg" width="75" height="56"><br><small>Kitchen</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Office_image_0059.jpg" width="75" height="49"><br><small>Forest</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Office_image_0164.jpg" width="75" height="55"><br><small>Coast</small></td>
+</tr>
+<tr>
+<td>Industrial</td>
+<td>0.120</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Industrial_image_0151.jpg" width="75" height="52"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Industrial_image_0267.jpg" width="75" height="46"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Industrial_image_0072.jpg" width="75" height="46"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Industrial_image_0053.jpg" width="75" height="56"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Industrial_image_0178.jpg" width="75" height="132"><br><small>Kitchen</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Industrial_image_0147.jpg" width="75" height="50"><br><small>Suburb</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Industrial_image_0028.jpg" width="75" height="50"><br><small>Coast</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Industrial_image_0104.jpg" width="75" height="50"><br><small>Coast</small></td>
+</tr>
+<tr>
+<td>Suburb</td>
+<td>0.220</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Suburb_image_0190.jpg" width="75" height="50"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Suburb_image_0089.jpg" width="75" height="50"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Suburb_image_0143.jpg" width="75" height="50"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Suburb_image_0173.jpg" width="75" height="50"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Suburb_image_0073.jpg" width="75" height="53"><br><small>Kitchen</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Suburb_image_0024.jpg" width="75" height="75"><br><small>Street</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Suburb_image_0146.jpg" width="75" height="50"><br><small>LivingRoom</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Suburb_image_0074.jpg" width="75" height="50"><br><small>Highway</small></td>
+</tr>
+<tr>
+<td>InsideCity</td>
+<td>0.140</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/InsideCity_image_0009.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/InsideCity_image_0151.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/InsideCity_image_0033.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/InsideCity_image_0094.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/InsideCity_image_0103.jpg" width="75" height="75"><br><small>Coast</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/InsideCity_image_0055.jpg" width="75" height="75"><br><small>Coast</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/InsideCity_image_0040.jpg" width="75" height="75"><br><small>Coast</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/InsideCity_image_0096.jpg" width="75" height="75"><br><small>Kitchen</small></td>
+</tr>
+<tr>
+<td>TallBuilding</td>
+<td>0.100</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/TallBuilding_image_0014.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/TallBuilding_image_0073.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/TallBuilding_image_0003.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/TallBuilding_image_0026.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/TallBuilding_image_0150.jpg" width="75" height="56"><br><small>Kitchen</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/TallBuilding_image_0055.jpg" width="75" height="75"><br><small>Mountain</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/TallBuilding_image_0018.jpg" width="75" height="75"><br><small>Forest</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/TallBuilding_image_0028.jpg" width="75" height="75"><br><small>OpenCountry</small></td>
+</tr>
+<tr>
+<td>Street</td>
+<td>0.160</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Street_image_0219.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Street_image_0067.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Street_image_0018.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Street_image_0089.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Street_image_0013.jpg" width="75" height="75"><br><small>InsideCity</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Street_image_0042.jpg" width="75" height="100"><br><small>Kitchen</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Street_image_0138.jpg" width="75" height="75"><br><small>Industrial</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Street_image_0068.jpg" width="75" height="75"><br><small>Store</small></td>
+</tr>
+<tr>
+<td>Highway</td>
+<td>0.650</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Highway_image_0021.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Highway_image_0098.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Highway_image_0011.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Highway_image_0133.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Highway_image_0119.jpg" width="75" height="75"><br><small>Forest</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Highway_image_0115.jpg" width="75" height="75"><br><small>Coast</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Highway_image_0030.jpg" width="75" height="75"><br><small>Forest</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Highway_image_0006.jpg" width="75" height="75"><br><small>Industrial</small></td>
+</tr>
+<tr>
+<td>OpenCountry</td>
+<td>0.300</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/OpenCountry_image_0075.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/OpenCountry_image_0397.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/OpenCountry_image_0037.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/OpenCountry_image_0091.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/OpenCountry_image_0095.jpg" width="75" height="75"><br><small>Coast</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/OpenCountry_image_0094.jpg" width="75" height="75"><br><small>Mountain</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/OpenCountry_image_0005.jpg" width="75" height="75"><br><small>Highway</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/OpenCountry_image_0071.jpg" width="75" height="75"><br><small>Bedroom</small></td>
+</tr>
+<tr>
+<td>Coast</td>
+<td>0.150</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Coast_image_0069.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Coast_image_0034.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Coast_image_0121.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Coast_image_0031.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Coast_image_0024.jpg" width="75" height="59"><br><small>Bedroom</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Coast_image_0025.jpg" width="75" height="48"><br><small>Industrial</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Coast_image_0044.jpg" width="75" height="75"><br><small>Highway</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Coast_image_0002.jpg" width="75" height="75"><br><small>Highway</small></td>
+</tr>
+<tr>
+<td>Mountain</td>
+<td>0.020</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Mountain_image_0124.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Mountain_image_0242.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Mountain_image_0104.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Mountain_image_0037.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Mountain_image_0079.jpg" width="75" height="57"><br><small>Store</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Mountain_image_0059.jpg" width="75" height="51"><br><small>Industrial</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Mountain_image_0043.jpg" width="75" height="75"><br><small>Kitchen</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Mountain_image_0019.jpg" width="75" height="75"><br><small>Office</small></td>
+</tr>
+<tr>
+<td>Forest</td>
+<td>0.170</td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Forest_image_0288.jpg" width="75" height="75"></td>
+<td bgcolor="LightBlue"><img src="./Project3-GMM_files/Forest_image_0151.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Forest_image_0036.jpg" width="75" height="75"></td>
+<td bgcolor="LightGreen"><img src="./Project3-GMM_files/Forest_image_0068.jpg" width="75" height="75"></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Forest_image_0005.jpg" width="75" height="50"><br><small>Suburb</small></td>
+<td bgcolor="LightCoral"><img src="./Project3-GMM_files/Forest_image_0043.jpg" width="75" height="56"><br><small>Bedroom</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Forest_image_0065.jpg" width="75" height="75"><br><small>Store</small></td>
+<td bgcolor="#FFBB55"><img src="./Project3-GMM_files/Forest_image_0137.jpg" width="75" height="75"><br><small>Coast</small></td>
+</tr>
+<tr>
+<th>Category name</th>
+<th>Accuracy</th>
+<th colspan="2">Sample training images</th>
+<th colspan="2">Sample true positives</th>
+<th colspan="2">False positives with true label</th>
+<th colspan="2">False negatives with wrong predicted label</th>
+</tr>
+</tbody></table>
+</center>
+
+
+</div>
+
+
+<div id="uvpn_rate_us">            <div class="uvpn_wrap">                <div class="uvpn_logo-ext">                    <div class="uvpn_logo-wrap">                        <img src="chrome-extension://gpieacagdjdfbifodokiccinpbacemjf/img/128.png">                    </div>                </div>                <div class="uvpn_title">                    Don’t Forget to Rate Us                </div>                <div class="uvpn_desc">                    If you enjoy our product, give us 5 stars. It helps so much!                </div>                <div class="stars">                    <svg xmlns="http://www.w3.org/2000/svg" width="1235" height="1175" viewBox="0 0 1235 1175">                        <path fill="#cf6218" d="M0,449h1235l-999,726 382-1175 382,1175z"></path>                    </svg>                    <svg xmlns="http://www.w3.org/2000/svg" width="1235" height="1175" viewBox="0 0 1235 1175">                        <path fill="#cf6218" d="M0,449h1235l-999,726 382-1175 382,1175z"></path>                    </svg>                    <svg xmlns="http://www.w3.org/2000/svg" width="1235" height="1175" viewBox="0 0 1235 1175">                        <path fill="#cf6218" d="M0,449h1235l-999,726 382-1175 382,1175z"></path>                    </svg>                    <svg xmlns="http://www.w3.org/2000/svg" width="1235" height="1175" viewBox="0 0 1235 1175">                        <path fill="#cf6218" d="M0,449h1235l-999,726 382-1175 382,1175z"></path>                    </svg>                    <svg xmlns="http://www.w3.org/2000/svg" width="1235" height="1175" viewBox="0 0 1235 1175">                        <path fill="#cf6218" d="M0,449h1235l-999,726 382-1175 382,1175z"></path>                    </svg>                </div>                <a target="_blank" href="https://chrome.google.com/webstore/detail/uvpn-free-and-unlimited-v/gpieacagdjdfbifodokiccinpbacemjf/reviews" id="rate_btn_rateus" class="uvpn_rate-btn uvpn_btn">                    Rate Us                </a>                <div id="close_btn_rateus" class="uvpn_later-btn uvpn_btn">                    Not Now                </div>            </div>        </div></body></html>
